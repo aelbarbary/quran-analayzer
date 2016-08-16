@@ -1,0 +1,13 @@
+- user can get get a specific surah or verse
+- user can get general info about a surah
+- user can search for any word in whole quran
+- user can search for any word in a specific surah
+- user can get top 10 most seen words for a given surah
+- user can get top 10 most seen words in whole quran
+- user can get top 10 less seen words for a given surah
+- user can get top 10 less seen words in whole quran
+- user can get the top seen words in two consecutive surahs
+- user can get all questions in quran
+- user can get all questions in specific surahNumber
+- user can get all orders in quran
+- user can get all orders in specific surahNumber---------------------

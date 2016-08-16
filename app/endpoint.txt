@@ -1,0 +1,12 @@
+/   Home
+
+/quran  ... returns Quran general info ... number of verses
+/quran/surah/1  ... return all verses for al-fatiha
+/quran/surah/1/info ... return all info about surah 1
+/quran/surah/1/mostseenwords  ... returns top 10 words that were seen in the surah
+/quran/surah/1/lessseenwords ... returns top 10 words that was seen less in the surah text
+
+/quran/surah/1/verse/1   ... return verse 1 in surah 1
+
+/quran/search/search-term ... search about given search term in all quran
+/quran/search/surah/1/search-term ... search about given search term in surah 1
