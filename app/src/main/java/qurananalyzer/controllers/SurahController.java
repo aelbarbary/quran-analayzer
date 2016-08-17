@@ -1,6 +1,9 @@
 package qurananalyzer.controllers;
 
+import java.io.Console;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +17,9 @@ public class SurahController {
 	@Autowired
 	private VerseRepository verseRepository;
 	
-	@RequestMapping("/{id}")
-    public Iterable<Verse> forSurah(String surahNumber) {
+	@RequestMapping("/{surahNumber}")
+    public Iterable<Verse> forSurah(@PathVariable("surahNumber") String surahNumber) {
+		System.out.println(surahNumber);
         return verseRepository.findBySurahNumber(surahNumber);
     }
 }
