@@ -38,6 +38,6 @@ public class HelloControllerIT {
 	@Test
 	public void getHome() throws Exception {
 		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-		assertThat(response.getBody(), equalTo("Hello Quran Analyzer!"));
+		assertThat(response.getBody(), equalTo("Welcome to Quran Analyzer ..."));
 	}
 }
