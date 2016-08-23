@@ -1,0 +1,14 @@
+web:
+  build: api/.
+  volumes:
+    - "./app:/api/src/app"
+  ports:
+    - "8888:8080"
+  links:
+    - elasticsearch
+elasticsearch:
+  image: elasticsearch:latest
+  command: elasticsearch -Des.network.host=0.0.0.0
+  ports:
+    - "9200:9200"
+    - "9300:9300"
