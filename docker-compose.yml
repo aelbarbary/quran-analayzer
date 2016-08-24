@@ -1,4 +1,4 @@
-web:
+api:
   build: api/.
   volumes:
     - "./app:/api/src/app"
@@ -6,6 +6,12 @@ web:
     - "8888:8080"
   links:
     - elasticsearch
+web:
+  build: web/.
+  volumes:
+    - "./web:/web"
+  ports:
+    - "3000:3000"
 elasticsearch:
   image: elasticsearch:latest
   command: elasticsearch -Des.network.host=0.0.0.0

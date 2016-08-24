@@ -58,7 +58,7 @@ var VerseForm = React.createClass({
   handleSurahChange: function(e) {
     console.log(e.target.value);
     $.ajax({
-      url: 'http://192.168.99.100:8080/quran/surah/' + e.target.value ,
+      url: 'http://192.168.99.100:8888/quran/surah/' + e.target.value ,
       dataType: 'json',
       cache: false,
       success: function(data) {
@@ -66,7 +66,7 @@ var VerseForm = React.createClass({
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
-        console.error('http://localhost:8080/quran/surah/' + e.target.value, status, err.toString());
+        console.error('http://localhost:8888/quran/surah/' + e.target.value, status, err.toString());
       }.bind(this)
     });
     this.setState({surah: e.target.value});

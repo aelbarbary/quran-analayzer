@@ -19,7 +19,6 @@ public class SurahController {
 	
 	@RequestMapping("/{surahNumber}")
     public Iterable<Verse> forSurah(@PathVariable("surahNumber") String surahNumber) {
-		System.out.println(surahNumber);
         return verseRepository.findBySurahNumber(surahNumber);
     }
 }

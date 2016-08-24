@@ -2,7 +2,7 @@ import csv
 import requests
 import json
 
-url = 'http://192.168.99.100:32769/quran/verse'
+url = 'http://192.168.99.100:9200/quran/verse'
 
 with open('surah-names.csv', 'rU') as csvfile:
     spamreader = csv.DictReader(csvfile, delimiter=',', quotechar='|')
