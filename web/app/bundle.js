@@ -42,9 +42,21 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var SearchForm = __webpack_require__(1);
+
+	ReactDOM.render(React.createElement(SearchForm, null), document.getElementById('content'));
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var VerseList = __webpack_require__(2);
 
 	var VerseForm = React.createClass({
 	  displayName: 'VerseForm',
@@ -98,60 +110,63 @@
 	  }
 	});
 
+	module.exports = VerseForm;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var Verse = __webpack_require__(3);
+
+	var VerseList = React.createClass({
+	  displayName: "VerseList",
+
+	  getInitialState: function getInitialState() {
+	    return { data: [] };
+	  },
+	  render: function render() {
+
+	    if (this.props.data == null) return null;
+	    var verseNodes = this.props.data.map(function (verse) {
+	      console.log(" verse =");
+	      console.log(verse);
+	      return React.createElement(Verse, { verse: verse.verse });
+	    });
+	    return React.createElement(
+	      "div",
+	      { className: "verse-list" },
+	      verseNodes
+	    );
+	  }
+	});
+
+	module.exports = VerseList;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	"use strict";
+
 	var Verse = React.createClass({
-	  displayName: 'Verse',
+	  displayName: "Verse",
 
 	  render: function render() {
-	    console.log(this.props);
 	    return React.createElement(
-	      'div',
-	      { className: 'comment' },
+	      "div",
+	      null,
 	      React.createElement(
-	        'h6',
-	        { className: 'commentAuthor' },
+	        "h6",
+	        null,
 	        this.props.verse
 	      )
 	    );
 	  }
 	});
 
-	var VerseBox = React.createClass({
-	  displayName: 'VerseBox',
-
-
-	  getInitialState: function getInitialState() {
-	    return { data: [] };
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'commentBox' },
-	      React.createElement(VerseForm, null)
-	    );
-	  }
-	});
-
-	var VerseList = React.createClass({
-	  displayName: 'VerseList',
-
-	  getInitialState: function getInitialState() {
-	    return { data: [] };
-	  },
-	  render: function render() {
-	    console.log(this.props.data);
-	    if (this.props.data == null) return null;
-	    var verseNodes = this.props.data.map(function (verse) {
-	      return React.createElement(Verse, { verse: verse.verse });
-	    });
-	    return React.createElement(
-	      'div',
-	      { className: 'verse-list' },
-	      verseNodes
-	    );
-	  }
-	});
-
-	ReactDOM.render(React.createElement(VerseBox, null), document.getElementById('content'));
+	module.exports = Verse;
 
 /***/ }
 /******/ ]);

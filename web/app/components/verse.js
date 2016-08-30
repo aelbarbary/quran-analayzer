@@ -1,11 +1,13 @@
 var Verse = React.createClass({
   render: function() {
     return (
-      <div className="comment">
-        <h6 className="commentAuthor">
-          {this.props.verse.verse}
+      <div>
+        <h6>
+          {this.props.verse}
         </h6>
       </div>
     );
   }
 });
+
+module.exports = Verse;
