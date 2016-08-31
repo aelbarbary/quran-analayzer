@@ -25,10 +25,10 @@ with open('English-Ahmed-Ali-100.csv', 'rU') as csvfile:
 
         verseText = verse[verseIndex+1:]
 
-        payload = {'surahNumber': surahNumber,
+        payload = {'surahNumber': int(surahNumber),
                     'surahArabicName': surahs[surahNumber]['arabicName'] ,
                     'surahEnglishName' : surahs[surahNumber]['englishName'] ,
-                    'verseNumber': verseNumber,
+                    'verseNumber': int(verseNumber),
                     'verse': verseText}
         r = requests.post(url, data=json.dumps(payload))
         print (r.status_code)

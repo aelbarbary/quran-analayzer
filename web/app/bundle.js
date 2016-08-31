@@ -56,17 +56,16 @@
 
 	'use strict';
 
-	var VerseList = __webpack_require__(2);
+	var ResultList = __webpack_require__(2);
 
-	var VerseForm = React.createClass({
-	  displayName: 'VerseForm',
+	var SearchForm = React.createClass({
+	  displayName: 'SearchForm',
 
 	  loadVersesFromServer: function loadVersesFromServer(surah) {},
 	  getInitialState: function getInitialState() {
 	    return { surah: '' };
 	  },
 	  handleSurahChange: function handleSurahChange(e) {
-	    console.log(e.target.value);
 	    $.ajax({
 	      url: 'http://localhost:8080/quran/search/' + e.target.value,
 	      dataType: 'json',
@@ -81,22 +80,13 @@
 	    });
 	    this.setState({ surah: e.target.value });
 	  },
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	    var surahNumber = this.state.surah.trim();
-	    if (!surahNumber) {
-	      return;
-	    }
-	    this.props.onSurahSubmit({ surah: surah });
-	    this.setState({ surah: '' });
-	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'form',
-	        { className: 'form-wrapper', onSubmit: this.handleSubmit },
+	        { className: 'form-wrapper' },
 	        React.createElement('input', {
 	          type: 'text', id: 'search',
 	          placeholder: 'What are you looking for?',
@@ -105,23 +95,23 @@
 	        }),
 	        React.createElement('input', { type: 'submit', value: 'go', id: 'submit' })
 	      ),
-	      React.createElement(VerseList, { data: this.state.data })
+	      React.createElement(ResultList, { data: this.state.data })
 	    );
 	  }
 	});
 
-	module.exports = VerseForm;
+	module.exports = SearchForm;
 
 /***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var Verse = __webpack_require__(3);
+	var Result = __webpack_require__(3);
 
-	var VerseList = React.createClass({
-	  displayName: "VerseList",
+	var ResultList = React.createClass({
+	  displayName: 'ResultList',
 
 	  getInitialState: function getInitialState() {
 	    return { data: [] };
@@ -129,20 +119,18 @@
 	  render: function render() {
 
 	    if (this.props.data == null) return null;
-	    var verseNodes = this.props.data.map(function (verse) {
-	      console.log(" verse =");
-	      console.log(verse);
-	      return React.createElement(Verse, { verse: verse.verse });
+	    var resultNodes = this.props.data.map(function (result) {
+	      return React.createElement(Result, { data: result });
 	    });
 	    return React.createElement(
-	      "div",
-	      { className: "verse-list" },
-	      verseNodes
+	      'div',
+	      null,
+	      resultNodes
 	    );
 	  }
 	});
 
-	module.exports = VerseList;
+	module.exports = ResultList;
 
 /***/ },
 /* 3 */
@@ -150,23 +138,35 @@
 
 	"use strict";
 
-	var Verse = React.createClass({
-	  displayName: "Verse",
+	var Result = React.createClass({
+	  displayName: "Result",
 
 	  render: function render() {
 	    return React.createElement(
 	      "div",
 	      null,
 	      React.createElement(
+	        "h5",
+	        null,
+	        "[",
+	        this.props.data.surahNumber,
+	        ":",
+	        this.props.data.verseNumber,
+	        "] ",
+	        this.props.data.surahArabicName,
+	        " - ",
+	        this.props.data.surahEnglishName
+	      ),
+	      React.createElement(
 	        "h6",
 	        null,
-	        this.props.verse
+	        this.props.data.verse
 	      )
 	    );
 	  }
 	});
 
-	module.exports = Verse;
+	module.exports = Result;
 
 /***/ }
 /******/ ]);

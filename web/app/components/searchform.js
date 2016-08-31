@@ -1,6 +1,6 @@
-var VerseList = require('./verselist.js');
+var ResultList = require('./resultlist.js');
 
-var VerseForm = React.createClass({
+var SearchForm = React.createClass({
   loadVersesFromServer: function(surah) {
 
   },
@@ -8,7 +8,6 @@ var VerseForm = React.createClass({
     return {surah: ''};
   },
   handleSurahChange: function(e) {
-    console.log(e.target.value);
     $.ajax({
       url: 'http://localhost:8080/quran/search/' + e.target.value ,
       dataType: 'json',
@@ -23,19 +22,10 @@ var VerseForm = React.createClass({
     });
     this.setState({surah: e.target.value});
   },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var surahNumber = this.state.surah.trim();
-    if (!surahNumber) {
-      return;
-    }
-    this.props.onSurahSubmit({surah: surah});
-    this.setState({surah: ''});
-  },
   render: function() {
     return (
       <div>
-        <form className="form-wrapper" onSubmit={this.handleSubmit}>
+        <form className="form-wrapper" >
           <input
             type="text" id="search"
             placeholder="What are you looking for?"
@@ -44,10 +34,10 @@ var VerseForm = React.createClass({
           />
           <input type="submit" value="go" id="submit" />
         </form>
-        <VerseList data={this.state.data} />
+        <ResultList data={this.state.data} />
       </div>
     );
   }
 });
 
-module.exports = VerseForm;
+module.exports = SearchForm;
