@@ -1,4 +1,4 @@
-var SearchForm = require('./components/searchform.js');
+var SearchForm = require('./components/searchform.jsx');
 
 ReactDOM.render(
   <SearchForm />,

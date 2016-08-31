@@ -88,7 +88,8 @@
 	        'form',
 	        { className: 'form-wrapper' },
 	        React.createElement('input', {
-	          type: 'text', id: 'search',
+	          type: 'text',
+	          id: 'search',
 	          placeholder: 'What are you looking for?',
 	          value: this.state.surah,
 	          onChange: this.handleSurahChange
@@ -106,12 +107,12 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var Result = __webpack_require__(3);
 
 	var ResultList = React.createClass({
-	  displayName: 'ResultList',
+	  displayName: "ResultList",
 
 	  getInitialState: function getInitialState() {
 	    return { data: [] };
@@ -123,9 +124,13 @@
 	      return React.createElement(Result, { data: result });
 	    });
 	    return React.createElement(
-	      'div',
-	      null,
-	      resultNodes
+	      "div",
+	      { className: "comments-container" },
+	      React.createElement(
+	        "ul",
+	        { id: "comments-list", className: "comments-list" },
+	        resultNodes
+	      )
 	    );
 	  }
 	});
@@ -143,24 +148,53 @@
 
 	  render: function render() {
 	    return React.createElement(
-	      "div",
+	      "li",
 	      null,
 	      React.createElement(
-	        "h5",
-	        null,
-	        "[",
-	        this.props.data.surahNumber,
-	        ":",
-	        this.props.data.verseNumber,
-	        "] ",
-	        this.props.data.surahArabicName,
-	        " - ",
-	        this.props.data.surahEnglishName
-	      ),
-	      React.createElement(
-	        "h6",
-	        null,
-	        this.props.data.verse
+	        "div",
+	        { className: "comment-main-level" },
+	        React.createElement(
+	          "div",
+	          { className: "comment-avatar" },
+	          React.createElement("img", {
+	            src: "http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1.jpg",
+	            alt: "" })
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "comment-box" },
+	          React.createElement(
+	            "div",
+	            { className: "comment-head" },
+	            React.createElement(
+	              "h6",
+	              { className: "comment-name by-author" },
+	              React.createElement(
+	                "a",
+	                { href: "http://creaticode.com/blog" },
+	                this.props.data.surahArabicName,
+	                " - ",
+	                this.props.data.surahEnglishName
+	              )
+	            ),
+	            React.createElement(
+	              "span",
+	              null,
+	              "[",
+	              this.props.data.surahNumber,
+	              ":",
+	              this.props.data.verseNumber,
+	              "]"
+	            ),
+	            React.createElement("i", { className: "fa fa-reply" }),
+	            React.createElement("i", { className: "fa fa-heart" })
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "comment-content" },
+	            this.props.data.verse
+	          )
+	        )
 	      )
 	    );
 	  }

@@ -1,4 +1,4 @@
-var ResultList = require('./resultlist.js');
+var ResultList = require('./resultlist.jsx');
 
 var SearchForm = React.createClass({
   loadVersesFromServer: function(surah) {
@@ -27,11 +27,12 @@ var SearchForm = React.createClass({
       <div>
         <form className="form-wrapper" >
           <input
-            type="text" id="search"
+            type="text"
+            id="search"
             placeholder="What are you looking for?"
             value={this.state.surah}
             onChange={this.handleSurahChange}
-          />
+            />
           <input type="submit" value="go" id="submit" />
         </form>
         <ResultList data={this.state.data} />

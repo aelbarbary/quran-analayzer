@@ -1,5 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+
+ }
+
 body {
-  background: #fff;
+  background: #dee1e3;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.7;
@@ -26,37 +32,6 @@ code {
   padding: 0 5px;
 }
 
-h1, h2, h3, h4 {
-  font-weight: bold;
-  margin: 0 0 15px;
-  padding: 0;
-}
-
-h1 {
-  border-bottom: 1px solid #ddd;
-  font-size: 2.5em;
-}
-
-h2 {
-  border-bottom: 1px solid #eee;
-  font-size: 2em;
-}
-
-h3 {
-  font-size: 1.5em;
-}
-
-h4 {
-  font-size: 1.2em;
-}
-
-p, ul {
-  margin: 15px 0;
-}
-
-ul {
-  padding-left: 30px;
-}
 
 .form-wrapper {
     width: 100%;
@@ -136,30 +111,4 @@ ul {
 
 .form-wrapper #submit::-moz-focus-inner {
     border: 0;
-}
-
-.verse-list {
-  width: 500px;
-  margin: 10px
-}
-
-.verse-list ol {
-  color: #ccc;
-  list-style-type: none;
-}
-
-.verse-list ol li {
-  position: relative;
-  font: bold italic 45px/1.5 Helvetica, Verdana, sans-serif;
-  margin-bottom: 5px;
-}
-
-.verse-list li p {
-  font: 12px/1.5 Helvetica, sans-serif;
-  padding-left: 60px;
-  color: #555;
-}
-
-.verse-list span {
-  position: absolute;
 }

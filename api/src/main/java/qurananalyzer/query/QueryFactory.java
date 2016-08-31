@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -41,9 +43,11 @@ public class QueryFactory {
     	}
     	else if (searchType == SearchType.Surah)
     	{ 
+    		Sort sort = new Sort(Sort.Direction.ASC, "verseNumber");
+    		PageRequest pr = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
     		String[] parts = searchTerm.split(":");
     		int surahNumber = Integer.parseInt(parts[1]);
-    		return verseRepository.getSurah(surahNumber, pageable);
+    		return verseRepository.getSurah(surahNumber, pr);
     	}
     	else if (searchType == SearchType.QuranExactMatch)
     	{

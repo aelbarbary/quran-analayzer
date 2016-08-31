@@ -1,4 +1,4 @@
-var Result = require('./result.js');
+var Result = require('./result.jsx');
 
 var ResultList = React.createClass({
   getInitialState: function() {
@@ -7,7 +7,7 @@ var ResultList = React.createClass({
   render: function() {
 
     if (this.props.data == null)
-      return null;
+    return null;
     var resultNodes = this.props.data.map(function(result) {
       return (
         <Result data={result}>
@@ -15,8 +15,10 @@ var ResultList = React.createClass({
       );
     });
     return (
-      <div>
+      <div className="comments-container">
+        <ul id="comments-list" className="comments-list">
         {resultNodes}
+      </ul>
       </div>
     );
   }
