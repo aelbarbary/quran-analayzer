@@ -93,8 +93,7 @@
 	          placeholder: 'What are you looking for?',
 	          value: this.state.surah,
 	          onChange: this.handleSurahChange
-	        }),
-	        React.createElement('input', { type: 'submit', value: 'go', id: 'submit' })
+	        })
 	      ),
 	      React.createElement(ResultList, { data: this.state.data })
 	    );
@@ -147,6 +146,7 @@
 	  displayName: "Result",
 
 	  render: function render() {
+	    var imageSource = "./images/" + this.props.data.surahEnglishName.replace(" ", "-").toLowerCase() + ".jpg";
 	    return React.createElement(
 	      "li",
 	      null,
@@ -157,7 +157,7 @@
 	          "div",
 	          { className: "comment-avatar" },
 	          React.createElement("img", {
-	            src: "http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1.jpg",
+	            src: imageSource,
 	            alt: "" })
 	        ),
 	        React.createElement(
@@ -186,7 +186,7 @@
 	              this.props.data.verseNumber,
 	              "]"
 	            ),
-	            React.createElement("i", { className: "fa fa-reply" }),
+	            React.createElement("i", null),
 	            React.createElement("i", { className: "fa fa-heart" })
 	          ),
 	          React.createElement(

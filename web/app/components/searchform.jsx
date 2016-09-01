@@ -33,7 +33,6 @@ var SearchForm = React.createClass({
             value={this.state.surah}
             onChange={this.handleSurahChange}
             />
-          <input type="submit" value="go" id="submit" />
         </form>
         <ResultList data={this.state.data} />
       </div>

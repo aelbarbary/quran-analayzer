@@ -1,11 +1,14 @@
 var Result = React.createClass({
   render: function() {
+    var imageSource = "./images/" +
+                      this.props.data.surahEnglishName.replace(" ", "-").toLowerCase() +
+                      ".jpg"
     return (
       <li>
         <div className="comment-main-level">
           <div className="comment-avatar">
             <img
-              src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1.jpg"
+              src={imageSource}
               alt=""/>
           </div>
 
@@ -17,7 +20,7 @@ var Result = React.createClass({
                 </a>
               </h6>
               <span>[{this.props.data.surahNumber}:{this.props.data.verseNumber}]</span>
-              <i className="fa fa-reply">
+              <i>
               </i>
               <i className="fa fa-heart">
               </i>

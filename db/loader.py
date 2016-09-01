@@ -24,7 +24,7 @@ with open('English-Ahmed-Ali-100.csv', 'rU') as csvfile:
         verseNumber = verse[surahIndex+1:verseIndex]
 
         verseText = verse[verseIndex+1:]
-
+        
         payload = {'surahNumber': int(surahNumber),
                     'surahArabicName': surahs[surahNumber]['arabicName'] ,
                     'surahEnglishName' : surahs[surahNumber]['englishName'] ,
