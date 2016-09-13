@@ -1,6 +1,11 @@
 var ResultList = require('./resultlist.jsx');
+var Menu = require('./menu.jsx');
+var MenuItem = require('./menuitem.jsx');
 
 var SearchForm = React.createClass({
+  showLeft: function() {
+        this.refs.left.show();
+  },
   loadVersesFromServer: function(surah) {
 
   },
@@ -24,8 +29,10 @@ var SearchForm = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <form className="form-wrapper" >
+      <div className="form-wrapper">
+          <button onClick={this.showLeft}>
+            Show Left Menu!
+          </button>
           <input
             type="text"
             id="search"
@@ -33,8 +40,20 @@ var SearchForm = React.createClass({
             value={this.state.surah}
             onChange={this.handleSurahChange}
             />
-        </form>
         <ResultList data={this.state.data} />
+
+        <Menu ref="left" alignment="left">
+          <MenuItem hash="first-page">
+            First Page
+          </MenuItem>
+          <MenuItem hash="second-page">
+            Second Page
+          </MenuItem>
+          <MenuItem hash="third-page">
+            Third Page
+          </MenuItem>
+        </Menu>
+
       </div>
     );
   }

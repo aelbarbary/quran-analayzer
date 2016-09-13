@@ -57,10 +57,15 @@
 	'use strict';
 
 	var ResultList = __webpack_require__(2);
+	var Menu = __webpack_require__(4);
+	var MenuItem = __webpack_require__(5);
 
 	var SearchForm = React.createClass({
 	  displayName: 'SearchForm',
 
+	  showLeft: function showLeft() {
+	    this.refs.left.show();
+	  },
 	  loadVersesFromServer: function loadVersesFromServer(surah) {},
 	  getInitialState: function getInitialState() {
 	    return { surah: '' };
@@ -83,19 +88,39 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'form-wrapper' },
 	      React.createElement(
-	        'form',
-	        { className: 'form-wrapper' },
-	        React.createElement('input', {
-	          type: 'text',
-	          id: 'search',
-	          placeholder: 'What are you looking for?',
-	          value: this.state.surah,
-	          onChange: this.handleSurahChange
-	        })
+	        'button',
+	        { onClick: this.showLeft },
+	        'Show Left Menu!'
 	      ),
-	      React.createElement(ResultList, { data: this.state.data })
+	      React.createElement('input', {
+	        type: 'text',
+	        id: 'search',
+	        placeholder: 'What are you looking for?',
+	        value: this.state.surah,
+	        onChange: this.handleSurahChange
+	      }),
+	      React.createElement(ResultList, { data: this.state.data }),
+	      React.createElement(
+	        Menu,
+	        { ref: 'left', alignment: 'left' },
+	        React.createElement(
+	          MenuItem,
+	          { hash: 'first-page' },
+	          'First Page'
+	        ),
+	        React.createElement(
+	          MenuItem,
+	          { hash: 'second-page' },
+	          'Second Page'
+	        ),
+	        React.createElement(
+	          MenuItem,
+	          { hash: 'third-page' },
+	          'Third Page'
+	        )
+	      )
 	    );
 	  }
 	});
@@ -155,13 +180,6 @@
 	        { className: "comment-main-level" },
 	        React.createElement(
 	          "div",
-	          { className: "comment-avatar" },
-	          React.createElement("img", {
-	            src: imageSource,
-	            alt: "" })
-	        ),
-	        React.createElement(
-	          "div",
 	          { className: "comment-box" },
 	          React.createElement(
 	            "div",
@@ -201,6 +219,70 @@
 	});
 
 	module.exports = Result;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var Menu = React.createClass({
+	    displayName: "Menu",
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            visible: false
+	        };
+	    },
+
+	    show: function show() {
+	        this.setState({ visible: true });
+	        document.addEventListener("click", this.hide.bind(this));
+	    },
+
+	    hide: function hide() {
+	        document.removeEventListener("click", this.hide.bind(this));
+	        this.setState({ visible: false });
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            { className: "menu" },
+	            React.createElement(
+	                "div",
+	                { className: (this.state.visible ? "visible " : "") + this.props.alignment },
+	                this.props.children
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Menu;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var MenuItem = React.createClass({
+	    displayName: "MenuItem",
+
+	    navigate: function navigate(hash) {
+	        window.location.hash = hash;
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            { className: "menu-item", onClick: this.navigate.bind(this, this.props.hash) },
+	            this.props.children
+	        );
+	    }
+	});
+
+	module.exports = MenuItem;
 
 /***/ }
 /******/ ]);

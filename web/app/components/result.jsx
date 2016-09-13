@@ -6,11 +6,7 @@ var Result = React.createClass({
     return (
       <li>
         <div className="comment-main-level">
-          <div className="comment-avatar">
-            <img
-              src={imageSource}
-              alt=""/>
-          </div>
+          
 
           <div className="comment-box">
             <div className="comment-head">
