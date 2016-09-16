@@ -1,3 +1,5 @@
+var React = require('react');
+
 var MenuItem = React.createClass({
     navigate: function(hash) {
         window.location.hash = hash;

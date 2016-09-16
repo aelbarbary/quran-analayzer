@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Result = React.createClass({
   render: function() {
     var imageSource = "./images/" +
@@ -6,7 +8,6 @@ var Result = React.createClass({
     return (
       <li>
         <div className="comment-main-level">
-          
 
           <div className="comment-box">
             <div className="comment-head">

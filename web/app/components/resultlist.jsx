@@ -1,4 +1,5 @@
 var Result = require('./result.jsx');
+var React = require('react');
 
 var ResultList = React.createClass({
   getInitialState: function() {
