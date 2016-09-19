@@ -11,11 +11,9 @@ var Result = React.createClass({
 
           <div className="comment-box">
             <div className="comment-head">
-              <h6 className="comment-name by-author">
-                <a href="http://creaticode.com/blog">
+              <div className="comment-name">
                   {this.props.data.surahArabicName} - {this.props.data.surahEnglishName}
-                </a>
-              </h6>
+              </div>
               <span>[{this.props.data.surahNumber}:{this.props.data.verseNumber}]</span>
               <i>
               </i>

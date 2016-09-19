@@ -24,7 +24,8 @@ var SearchForm = React.createClass({
       success: function(data) {
 
         this.setState({data: data.content, pageNum: Math.ceil(data.totalElements / data.size)});
-
+        console.log(this.refs.counter);
+        $("#counter").text(data.totalElements);
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(url, status, err.toString());
@@ -60,8 +61,8 @@ var SearchForm = React.createClass({
             value={this.state.surah}
             onChange={this.handleSearchTermChange}
             />
+          <div ref="counter" id="counter"></div>
         <ResultList data={this.state.data} />
-
 
         <Menu ref="left" alignment="left">
           <MenuItem hash="first-page">
@@ -74,6 +75,7 @@ var SearchForm = React.createClass({
             Third Page
           </MenuItem>
         </Menu>
+
         <ReactPaginate
             previousLabel={"previous"}
             nextLabel={"next"}

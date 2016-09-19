@@ -86,6 +86,8 @@
 	      success: function (data) {
 
 	        this.setState({ data: data.content, pageNum: Math.ceil(data.totalElements / data.size) });
+	        console.log(this.refs.counter);
+	        $("#counter").text(data.totalElements);
 	      }.bind(this),
 	      error: function (xhr, status, err) {
 	        console.error(url, status, err.toString());
@@ -125,6 +127,7 @@
 	        value: this.state.surah,
 	        onChange: this.handleSearchTermChange
 	      }),
+	      React.createElement('div', { ref: 'counter', id: 'counter' }),
 	      React.createElement(ResultList, { data: this.state.data }),
 	      React.createElement(
 	        Menu,
@@ -228,15 +231,11 @@
 	            "div",
 	            { className: "comment-head" },
 	            React.createElement(
-	              "h6",
-	              { className: "comment-name by-author" },
-	              React.createElement(
-	                "a",
-	                { href: "http://creaticode.com/blog" },
-	                this.props.data.surahArabicName,
-	                " - ",
-	                this.props.data.surahEnglishName
-	              )
+	              "div",
+	              { className: "comment-name" },
+	              this.props.data.surahArabicName,
+	              " - ",
+	              this.props.data.surahEnglishName
 	            ),
 	            React.createElement(
 	              "span",
