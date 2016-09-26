@@ -20,6 +20,8 @@ public class Verse {
 
 	private String verse;
 	
+	private String arabicVerse;
+	
 	public String getVerse() {
 		return this.verse;
 	}
@@ -58,5 +60,13 @@ public class Verse {
 
 	public void setSurahNumber(String surahNumber) {
 		this.surahNumber = surahNumber;
+	}
+
+	public String getArabicVerse() {
+		return arabicVerse;
+	}
+
+	public void setArabicVerse(String arabicVerse) {
+		this.arabicVerse = arabicVerse;
 	}
 }

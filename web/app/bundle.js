@@ -252,7 +252,10 @@
 	          React.createElement(
 	            "div",
 	            { className: "comment-content" },
-	            this.props.data.verse
+	            this.props.data.verse,
+	            " ",
+	            React.createElement("br", null),
+	            this.props.data.arabicVerse
 	          )
 	        )
 	      )

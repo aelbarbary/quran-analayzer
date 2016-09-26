@@ -21,7 +21,8 @@ var Result = React.createClass({
               </i>
             </div>
             <div className="comment-content">
-              {this.props.data.verse}
+              <h2>{this.props.data.verse} </h2>
+              <h3>{this.props.data.arabicVerse}</h3>
             </div>
           </div>
         </div>

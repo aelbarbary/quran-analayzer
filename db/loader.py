@@ -17,7 +17,7 @@ with open('surah-names.csv', 'rU') as csvfile:
         r = requests.post(url, data=json.dumps(payload))
         print (r.status_code)
 
-url = 'http://192.168.99.100:9200/quran/verse'
+baseUrl = 'http://192.168.99.100:9200/quran/verse'
 with open('English-Ahmed-Ali-100.csv', 'rU') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
@@ -32,11 +32,25 @@ with open('English-Ahmed-Ali-100.csv', 'rU') as csvfile:
         verseNumber = verse[surahIndex+1:verseIndex]
 
         verseText = verse[verseIndex+1:]
-
-        payload = {'surahNumber': int(surahNumber),
+        url = baseUrl + '/' + surahNumber + '-' + verseNumber
+        payload = {
+                    'surahNumber': int(surahNumber),
                     'surahArabicName': surahs[surahNumber]['arabicName'] ,
                     'surahEnglishName' : surahs[surahNumber]['englishName'] ,
                     'verseNumber': int(verseNumber),
                     'verse': verseText}
+        r = requests.post(url, data=json.dumps(payload))
+        print (r.status_code)
+
+with open('Arabic-(Original-Book)-1.csv', 'rU') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    for row in spamreader:
+        payload = {
+                  'doc' : {
+                   'arabicVerse' : row[3]
+                  }
+                  }
+
+        url = baseUrl + '/' + row[1] + '-' + row[2] + '/_update'
         r = requests.post(url, data=json.dumps(payload))
         print (r.status_code)
